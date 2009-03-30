@@ -4,7 +4,7 @@ use warnings;
 package URI::cpan;
 use base qw(URI::_generic);
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 =head1 NAME
 
@@ -35,7 +35,10 @@ Reserved for likely future use are:
 use Carp ();
 use URI::cpan::author;
 use URI::cpan::dist;
+use URI::cpan::distfile;
+use URI::cpan::module;
 use URI::cpan::package;
+use URI::cpan::dist;
 
 my %type_class = (
   author   => 'URI::cpan::author',
