@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               URI-cpan
-version:            1.002
+version:            1.003
 abstract:           ~
 author:  []
 license:            perl

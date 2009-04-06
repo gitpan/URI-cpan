@@ -4,7 +4,7 @@ use warnings;
 package URI::cpan::distfile;
 use base qw(URI::cpan);
 
-our $VERSION = '1.002';
+our $VERSION = '1.003';
 
 use Carp ();
 use CPAN::DistnameInfo;
@@ -25,9 +25,7 @@ format AUTHOR/DISTFILE
 sub validate {
   my ($self) = @_;
 
-  my (undef, undef, $author, $filename, @rest) = split m{/}, $self->path;
-
-  Carp::croak "invalid cpan URI: trailing path elements in $self" if @rest;
+  my (undef, undef, $author, $filename) = split m{/}, $self->path, 4;
 
   Carp::croak "invalid cpan URI: invalid author part in $self"
     unless $author =~ m{\A[A-Z]+\z};
