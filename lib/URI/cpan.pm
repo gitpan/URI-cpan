@@ -1,36 +1,13 @@
 use strict;
 use warnings;
+# ABSTRACT: URLs that refer to things on the CPAN
 
 package URI::cpan;
-use base qw(URI::_generic);
+{
+  $URI::cpan::VERSION = '1.005';
+}
+use parent qw(URI::_generic);
 
-our $VERSION = '1.004';
-
-=head1 NAME
-
-URI::cpan - URLs that refer to things on the CPAN
-
-=head1 SYNOPSIS
-
-  use URI::cpan;
-
-  my $uri = URI->new('cpan:///distfile/RJBS/URI-cpan-1.000.tar.gz');
-
-  $uri->author;       # => RJBS
-  $uri->dist_name;    # => URI-cpan
-  $uri->dist_version; # => 1.000
-
-Other forms of cpan: URI include:
-
-  cpan:///author/RJBS
-
-Reserved for likely future use are:
-
-  cpan:///dist
-  cpan:///module
-  cpan:///package
-
-=cut
 
 use Carp ();
 use URI::cpan::author;
@@ -88,6 +65,43 @@ sub _p_rel {
   return $path;
 }
 
+
+1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+URI::cpan - URLs that refer to things on the CPAN
+
+=head1 VERSION
+
+version 1.005
+
+=head1 SYNOPSIS
+
+  use URI::cpan;
+
+  my $uri = URI->new('cpan:///distfile/RJBS/URI-cpan-1.000.tar.gz');
+
+  $uri->author;       # => RJBS
+  $uri->dist_name;    # => URI-cpan
+  $uri->dist_version; # => 1.000
+
+Other forms of cpan: URI include:
+
+  cpan:///author/RJBS
+
+Reserved for likely future use are:
+
+  cpan:///dist
+  cpan:///module
+  cpan:///package
+
 =head1 WARNINGS
 
 URI objects are difficult to subclass, so I have not (yet?) taken the time to
@@ -105,11 +119,15 @@ L<URI::cpan::author> and L<URI::cpan::distfile>
 This code is derived from code written at Pobox.com by Hans Dieter Pearcey.
 Dieter helped thrash out this new implementation, too.
 
-=head1 COPYRIGHT
+=head1 AUTHOR
 
-Copyright 2009 Ricardo SIGNES.  This program is free software;  you can
-redistribute it and/or modify it under the same terms as Perl itself.
+Ricardo SIGNES <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo SIGNES.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-1;
